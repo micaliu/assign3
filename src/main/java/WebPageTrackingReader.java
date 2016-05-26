@@ -67,7 +67,13 @@ public class WebPageTrackingReader implements PackageTrackingReader{
     }
 
 
-    public void validateDocument(Document doc) {
+    public boolean validateDocument(Document doc) {
+        Element err = doc.select("#results-multi > div.panel.tracking-result.result-error.result-open > div > div.tracking-summary > div.tracking-progress.status-error > div.progress-indicator > h2").first();
+        if (doc.html().length() >0 && err !=null){
+            return false;
+        }else{
+            return true;
+        }
     }
     public static Date dateParse(String dateStr){
         Date d = null;
