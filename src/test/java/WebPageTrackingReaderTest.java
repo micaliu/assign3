@@ -36,11 +36,10 @@ public class WebPageTrackingReaderTest {
         }
 
     }
-    @Test(expected=NullPointerException.class)
+    @Test
     public void ParseInvalidPageTest(){
         try {
             Document doc = Jsoup.parse(new File("src\\main\\resources\\USPS_Invalid.html"),"UTF-8");
-//            webReader.validateDocument(doc);
             Assert.assertEquals(webReader.validateDocument(doc),false);
         } catch (IOException e) {
             e.printStackTrace();
